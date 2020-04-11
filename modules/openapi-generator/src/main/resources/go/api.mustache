@@ -16,6 +16,7 @@ var (
 	_ _context.Context
 )
 
+{{#generateInterfaces}}
 type {{classname}} interface {
 {{#operation}}
 
@@ -48,6 +49,7 @@ type {{classname}} interface {
 {{/operation}}
 }
 
+{{/generateInterfaces}}
 // {{classname}}Service {{classname}} service
 type {{classname}}Service service
 {{#operation}}

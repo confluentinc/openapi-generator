@@ -43,6 +43,7 @@ public abstract class AbstractGoCodegen extends DefaultCodegen implements Codege
     protected boolean withXml = false;
     protected boolean enumClassPrefix = false;
     protected boolean structPrefix = false;
+    protected boolean generateInterfaces = false;
 
     protected String packageName = "openapi";
     protected Set<String> numberTypes;
@@ -785,6 +786,10 @@ public abstract class AbstractGoCodegen extends DefaultCodegen implements Codege
 
     public void setStructPrefix(boolean structPrefix) {
         this.structPrefix = structPrefix;
+    }
+
+    public void setGenerateInterfaces(boolean generateInterfaces) {
+        this.generateInterfaces = generateInterfaces;
     }
 
     @Override
