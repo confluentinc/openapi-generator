@@ -42,7 +42,12 @@ type APIClient struct {
 {{#apis}}
 {{#operations}}
 
-	{{classname}} *{{classname}}Service
+  {{#generateInterfaces}}
+    {{classname}} {{classname}}
+  {{/generateInterfaces}}
+  {{^generateInterfaces}}
+    {{classname}} *{{classname}}Service
+  {{/generateInterfaces}}
 {{/operations}}
 {{/apis}}
 {{/apiInfo}}
