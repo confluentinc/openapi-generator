@@ -27,36 +27,33 @@ var (
 // FakeApiService FakeApi service
 type FakeApiService service
 
-type apiCreateXmlItemRequest struct {
+type ApiCreateXmlItemRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	xmlItem *XmlItem
 }
 
 
-func (r apiCreateXmlItemRequest) XmlItem(xmlItem XmlItem) apiCreateXmlItemRequest {
+func (r ApiCreateXmlItemRequest) XmlItem(xmlItem XmlItem) ApiCreateXmlItemRequest {
 	r.xmlItem = &xmlItem
 	return r
 }
 
 /*
-CreateXmlItem creates an XmlItem
-this route creates an XmlItem
+ * CreateXmlItem creates an XmlItem
+ * this route creates an XmlItem
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiCreateXmlItemRequest
-*/
-func (a *FakeApiService) CreateXmlItem(ctx _context.Context) apiCreateXmlItemRequest {
-	return apiCreateXmlItemRequest{
-		apiService: a,
+ * @return apiCreateXmlItemRequest
+ */
+func (a *FakeApiService) CreateXmlItemGetRequest(ctx _context.Context) ApiCreateXmlItemRequest {
+	return ApiCreateXmlItemRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiCreateXmlItemRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) CreateXmlItemExecute(r ApiCreateXmlItemRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -66,7 +63,7 @@ func (r apiCreateXmlItemRequest) Execute() (*_nethttp.Response, error) {
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.CreateXmlItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.CreateXmlItem")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -100,12 +97,12 @@ func (r apiCreateXmlItemRequest) Execute() (*_nethttp.Response, error) {
 	}
 	// body params
 	localVarPostBody = r.xmlItem
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -126,36 +123,34 @@ func (r apiCreateXmlItemRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiFakeOuterBooleanSerializeRequest struct {
+type ApiFakeOuterBooleanSerializeRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	body *bool
 }
 
 
-func (r apiFakeOuterBooleanSerializeRequest) Body(body bool) apiFakeOuterBooleanSerializeRequest {
+func (r ApiFakeOuterBooleanSerializeRequest) Body(body bool) ApiFakeOuterBooleanSerializeRequest {
 	r.body = &body
 	return r
 }
 
 /*
-FakeOuterBooleanSerialize Method for FakeOuterBooleanSerialize
-Test serialization of outer boolean types
+ * FakeOuterBooleanSerialize Method for FakeOuterBooleanSerialize
+ * Test serialization of outer boolean types
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiFakeOuterBooleanSerializeRequest
-*/
-func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context) apiFakeOuterBooleanSerializeRequest {
-	return apiFakeOuterBooleanSerializeRequest{
-		apiService: a,
+ * @return apiFakeOuterBooleanSerializeRequest
+ */
+func (a *FakeApiService) FakeOuterBooleanSerializeGetRequest(ctx _context.Context) ApiFakeOuterBooleanSerializeRequest {
+	return ApiFakeOuterBooleanSerializeRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
- @return bool
-*/
-func (r apiFakeOuterBooleanSerializeRequest) Execute() (bool, *_nethttp.Response, error) {
+ * Execute executes the request
+ * @return bool
+ */
+func (a *FakeApiService) FakeOuterBooleanSerializeExecute(r ApiFakeOuterBooleanSerializeRequest) (bool, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -165,7 +160,7 @@ func (r apiFakeOuterBooleanSerializeRequest) Execute() (bool, *_nethttp.Response
 		localVarReturnValue  bool
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterBooleanSerialize")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterBooleanSerialize")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -195,12 +190,12 @@ func (r apiFakeOuterBooleanSerializeRequest) Execute() (bool, *_nethttp.Response
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -219,7 +214,7 @@ func (r apiFakeOuterBooleanSerializeRequest) Execute() (bool, *_nethttp.Response
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = r.apiService.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
@@ -230,36 +225,34 @@ func (r apiFakeOuterBooleanSerializeRequest) Execute() (bool, *_nethttp.Response
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiFakeOuterCompositeSerializeRequest struct {
+type ApiFakeOuterCompositeSerializeRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	body *OuterComposite
 }
 
 
-func (r apiFakeOuterCompositeSerializeRequest) Body(body OuterComposite) apiFakeOuterCompositeSerializeRequest {
+func (r ApiFakeOuterCompositeSerializeRequest) Body(body OuterComposite) ApiFakeOuterCompositeSerializeRequest {
 	r.body = &body
 	return r
 }
 
 /*
-FakeOuterCompositeSerialize Method for FakeOuterCompositeSerialize
-Test serialization of object with outer number type
+ * FakeOuterCompositeSerialize Method for FakeOuterCompositeSerialize
+ * Test serialization of object with outer number type
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiFakeOuterCompositeSerializeRequest
-*/
-func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context) apiFakeOuterCompositeSerializeRequest {
-	return apiFakeOuterCompositeSerializeRequest{
-		apiService: a,
+ * @return apiFakeOuterCompositeSerializeRequest
+ */
+func (a *FakeApiService) FakeOuterCompositeSerializeGetRequest(ctx _context.Context) ApiFakeOuterCompositeSerializeRequest {
+	return ApiFakeOuterCompositeSerializeRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
- @return OuterComposite
-*/
-func (r apiFakeOuterCompositeSerializeRequest) Execute() (OuterComposite, *_nethttp.Response, error) {
+ * Execute executes the request
+ * @return OuterComposite
+ */
+func (a *FakeApiService) FakeOuterCompositeSerializeExecute(r ApiFakeOuterCompositeSerializeRequest) (OuterComposite, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -269,7 +262,7 @@ func (r apiFakeOuterCompositeSerializeRequest) Execute() (OuterComposite, *_neth
 		localVarReturnValue  OuterComposite
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterCompositeSerialize")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterCompositeSerialize")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -299,12 +292,12 @@ func (r apiFakeOuterCompositeSerializeRequest) Execute() (OuterComposite, *_neth
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -323,7 +316,7 @@ func (r apiFakeOuterCompositeSerializeRequest) Execute() (OuterComposite, *_neth
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = r.apiService.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
@@ -334,36 +327,34 @@ func (r apiFakeOuterCompositeSerializeRequest) Execute() (OuterComposite, *_neth
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiFakeOuterNumberSerializeRequest struct {
+type ApiFakeOuterNumberSerializeRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	body *float32
 }
 
 
-func (r apiFakeOuterNumberSerializeRequest) Body(body float32) apiFakeOuterNumberSerializeRequest {
+func (r ApiFakeOuterNumberSerializeRequest) Body(body float32) ApiFakeOuterNumberSerializeRequest {
 	r.body = &body
 	return r
 }
 
 /*
-FakeOuterNumberSerialize Method for FakeOuterNumberSerialize
-Test serialization of outer number types
+ * FakeOuterNumberSerialize Method for FakeOuterNumberSerialize
+ * Test serialization of outer number types
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiFakeOuterNumberSerializeRequest
-*/
-func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context) apiFakeOuterNumberSerializeRequest {
-	return apiFakeOuterNumberSerializeRequest{
-		apiService: a,
+ * @return apiFakeOuterNumberSerializeRequest
+ */
+func (a *FakeApiService) FakeOuterNumberSerializeGetRequest(ctx _context.Context) ApiFakeOuterNumberSerializeRequest {
+	return ApiFakeOuterNumberSerializeRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
- @return float32
-*/
-func (r apiFakeOuterNumberSerializeRequest) Execute() (float32, *_nethttp.Response, error) {
+ * Execute executes the request
+ * @return float32
+ */
+func (a *FakeApiService) FakeOuterNumberSerializeExecute(r ApiFakeOuterNumberSerializeRequest) (float32, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -373,7 +364,7 @@ func (r apiFakeOuterNumberSerializeRequest) Execute() (float32, *_nethttp.Respon
 		localVarReturnValue  float32
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterNumberSerialize")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterNumberSerialize")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -403,12 +394,12 @@ func (r apiFakeOuterNumberSerializeRequest) Execute() (float32, *_nethttp.Respon
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -427,7 +418,7 @@ func (r apiFakeOuterNumberSerializeRequest) Execute() (float32, *_nethttp.Respon
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = r.apiService.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
@@ -438,36 +429,34 @@ func (r apiFakeOuterNumberSerializeRequest) Execute() (float32, *_nethttp.Respon
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiFakeOuterStringSerializeRequest struct {
+type ApiFakeOuterStringSerializeRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	body *string
 }
 
 
-func (r apiFakeOuterStringSerializeRequest) Body(body string) apiFakeOuterStringSerializeRequest {
+func (r ApiFakeOuterStringSerializeRequest) Body(body string) ApiFakeOuterStringSerializeRequest {
 	r.body = &body
 	return r
 }
 
 /*
-FakeOuterStringSerialize Method for FakeOuterStringSerialize
-Test serialization of outer string types
+ * FakeOuterStringSerialize Method for FakeOuterStringSerialize
+ * Test serialization of outer string types
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiFakeOuterStringSerializeRequest
-*/
-func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context) apiFakeOuterStringSerializeRequest {
-	return apiFakeOuterStringSerializeRequest{
-		apiService: a,
+ * @return apiFakeOuterStringSerializeRequest
+ */
+func (a *FakeApiService) FakeOuterStringSerializeGetRequest(ctx _context.Context) ApiFakeOuterStringSerializeRequest {
+	return ApiFakeOuterStringSerializeRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
- @return string
-*/
-func (r apiFakeOuterStringSerializeRequest) Execute() (string, *_nethttp.Response, error) {
+ * Execute executes the request
+ * @return string
+ */
+func (a *FakeApiService) FakeOuterStringSerializeExecute(r ApiFakeOuterStringSerializeRequest) (string, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -477,7 +466,7 @@ func (r apiFakeOuterStringSerializeRequest) Execute() (string, *_nethttp.Respons
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterStringSerialize")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.FakeOuterStringSerialize")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -507,12 +496,12 @@ func (r apiFakeOuterStringSerializeRequest) Execute() (string, *_nethttp.Respons
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -531,7 +520,7 @@ func (r apiFakeOuterStringSerializeRequest) Execute() (string, *_nethttp.Respons
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = r.apiService.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
@@ -542,36 +531,33 @@ func (r apiFakeOuterStringSerializeRequest) Execute() (string, *_nethttp.Respons
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiTestBodyWithFileSchemaRequest struct {
+type ApiTestBodyWithFileSchemaRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	body *FileSchemaTestClass
 }
 
 
-func (r apiTestBodyWithFileSchemaRequest) Body(body FileSchemaTestClass) apiTestBodyWithFileSchemaRequest {
+func (r ApiTestBodyWithFileSchemaRequest) Body(body FileSchemaTestClass) ApiTestBodyWithFileSchemaRequest {
 	r.body = &body
 	return r
 }
 
 /*
-TestBodyWithFileSchema Method for TestBodyWithFileSchema
-For this test, the body for this request much reference a schema named `File`.
+ * TestBodyWithFileSchema Method for TestBodyWithFileSchema
+ * For this test, the body for this request much reference a schema named `File`.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestBodyWithFileSchemaRequest
-*/
-func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context) apiTestBodyWithFileSchemaRequest {
-	return apiTestBodyWithFileSchemaRequest{
-		apiService: a,
+ * @return apiTestBodyWithFileSchemaRequest
+ */
+func (a *FakeApiService) TestBodyWithFileSchemaGetRequest(ctx _context.Context) ApiTestBodyWithFileSchemaRequest {
+	return ApiTestBodyWithFileSchemaRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestBodyWithFileSchemaRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestBodyWithFileSchemaExecute(r ApiTestBodyWithFileSchemaRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -581,7 +567,7 @@ func (r apiTestBodyWithFileSchemaRequest) Execute() (*_nethttp.Response, error) 
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestBodyWithFileSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestBodyWithFileSchema")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -615,12 +601,12 @@ func (r apiTestBodyWithFileSchemaRequest) Execute() (*_nethttp.Response, error) 
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -641,41 +627,38 @@ func (r apiTestBodyWithFileSchemaRequest) Execute() (*_nethttp.Response, error) 
 
 	return localVarHTTPResponse, nil
 }
-type apiTestBodyWithQueryParamsRequest struct {
+type ApiTestBodyWithQueryParamsRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	query *string
 	body *User
 }
 
 
-func (r apiTestBodyWithQueryParamsRequest) Query(query string) apiTestBodyWithQueryParamsRequest {
+func (r ApiTestBodyWithQueryParamsRequest) Query(query string) ApiTestBodyWithQueryParamsRequest {
 	r.query = &query
 	return r
 }
 
-func (r apiTestBodyWithQueryParamsRequest) Body(body User) apiTestBodyWithQueryParamsRequest {
+func (r ApiTestBodyWithQueryParamsRequest) Body(body User) ApiTestBodyWithQueryParamsRequest {
 	r.body = &body
 	return r
 }
 
 /*
-TestBodyWithQueryParams Method for TestBodyWithQueryParams
+ * TestBodyWithQueryParams Method for TestBodyWithQueryParams
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestBodyWithQueryParamsRequest
-*/
-func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context) apiTestBodyWithQueryParamsRequest {
-	return apiTestBodyWithQueryParamsRequest{
-		apiService: a,
+ * @return apiTestBodyWithQueryParamsRequest
+ */
+func (a *FakeApiService) TestBodyWithQueryParamsGetRequest(ctx _context.Context) ApiTestBodyWithQueryParamsRequest {
+	return ApiTestBodyWithQueryParamsRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestBodyWithQueryParamsRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestBodyWithQueryParamsExecute(r ApiTestBodyWithQueryParamsRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -685,7 +668,7 @@ func (r apiTestBodyWithQueryParamsRequest) Execute() (*_nethttp.Response, error)
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestBodyWithQueryParams")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestBodyWithQueryParams")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -724,12 +707,12 @@ func (r apiTestBodyWithQueryParamsRequest) Execute() (*_nethttp.Response, error)
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -750,36 +733,34 @@ func (r apiTestBodyWithQueryParamsRequest) Execute() (*_nethttp.Response, error)
 
 	return localVarHTTPResponse, nil
 }
-type apiTestClientModelRequest struct {
+type ApiTestClientModelRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	body *Client
 }
 
 
-func (r apiTestClientModelRequest) Body(body Client) apiTestClientModelRequest {
+func (r ApiTestClientModelRequest) Body(body Client) ApiTestClientModelRequest {
 	r.body = &body
 	return r
 }
 
 /*
-TestClientModel To test \"client\" model
-To test "client" model
+ * TestClientModel To test \"client\" model
+ * To test "client" model
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestClientModelRequest
-*/
-func (a *FakeApiService) TestClientModel(ctx _context.Context) apiTestClientModelRequest {
-	return apiTestClientModelRequest{
-		apiService: a,
+ * @return apiTestClientModelRequest
+ */
+func (a *FakeApiService) TestClientModelGetRequest(ctx _context.Context) ApiTestClientModelRequest {
+	return ApiTestClientModelRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
- @return Client
-*/
-func (r apiTestClientModelRequest) Execute() (Client, *_nethttp.Response, error) {
+ * Execute executes the request
+ * @return Client
+ */
+func (a *FakeApiService) TestClientModelExecute(r ApiTestClientModelRequest) (Client, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -789,7 +770,7 @@ func (r apiTestClientModelRequest) Execute() (Client, *_nethttp.Response, error)
 		localVarReturnValue  Client
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestClientModel")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestClientModel")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -823,12 +804,12 @@ func (r apiTestClientModelRequest) Execute() (Client, *_nethttp.Response, error)
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -847,7 +828,7 @@ func (r apiTestClientModelRequest) Execute() (Client, *_nethttp.Response, error)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = r.apiService.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
@@ -858,9 +839,8 @@ func (r apiTestClientModelRequest) Execute() (Client, *_nethttp.Response, error)
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-type apiTestEndpointParametersRequest struct {
+type ApiTestEndpointParametersRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	number *float32
 	double *float64
 	patternWithoutDelimiter *string
@@ -878,97 +858,95 @@ type apiTestEndpointParametersRequest struct {
 }
 
 
-func (r apiTestEndpointParametersRequest) Number(number float32) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Number(number float32) ApiTestEndpointParametersRequest {
 	r.number = &number
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Double(double float64) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Double(double float64) ApiTestEndpointParametersRequest {
 	r.double = &double
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) PatternWithoutDelimiter(patternWithoutDelimiter string) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) PatternWithoutDelimiter(patternWithoutDelimiter string) ApiTestEndpointParametersRequest {
 	r.patternWithoutDelimiter = &patternWithoutDelimiter
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Byte_(byte_ string) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Byte_(byte_ string) ApiTestEndpointParametersRequest {
 	r.byte_ = &byte_
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Integer(integer int32) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Integer(integer int32) ApiTestEndpointParametersRequest {
 	r.integer = &integer
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Int32_(int32_ int32) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Int32_(int32_ int32) ApiTestEndpointParametersRequest {
 	r.int32_ = &int32_
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Int64_(int64_ int64) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Int64_(int64_ int64) ApiTestEndpointParametersRequest {
 	r.int64_ = &int64_
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Float(float float32) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Float(float float32) ApiTestEndpointParametersRequest {
 	r.float = &float
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) String_(string_ string) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) String_(string_ string) ApiTestEndpointParametersRequest {
 	r.string_ = &string_
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Binary(binary *os.File) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Binary(binary *os.File) ApiTestEndpointParametersRequest {
 	r.binary = &binary
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Date(date string) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Date(date string) ApiTestEndpointParametersRequest {
 	r.date = &date
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) DateTime(dateTime time.Time) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) DateTime(dateTime time.Time) ApiTestEndpointParametersRequest {
 	r.dateTime = &dateTime
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Password(password string) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Password(password string) ApiTestEndpointParametersRequest {
 	r.password = &password
 	return r
 }
 
-func (r apiTestEndpointParametersRequest) Callback(callback string) apiTestEndpointParametersRequest {
+func (r ApiTestEndpointParametersRequest) Callback(callback string) ApiTestEndpointParametersRequest {
 	r.callback = &callback
 	return r
 }
 
 /*
-TestEndpointParameters Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
-Fake endpoint for testing various parameters
+ * TestEndpointParameters Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트
+ * Fake endpoint for testing various parameters
  假端點
  偽のエンドポイント
  가짜 엔드 포인트
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestEndpointParametersRequest
-*/
-func (a *FakeApiService) TestEndpointParameters(ctx _context.Context) apiTestEndpointParametersRequest {
-	return apiTestEndpointParametersRequest{
-		apiService: a,
+ * @return apiTestEndpointParametersRequest
+ */
+func (a *FakeApiService) TestEndpointParametersGetRequest(ctx _context.Context) ApiTestEndpointParametersRequest {
+	return ApiTestEndpointParametersRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestEndpointParametersRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestEndpointParametersExecute(r ApiTestEndpointParametersRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -978,7 +956,7 @@ func (r apiTestEndpointParametersRequest) Execute() (*_nethttp.Response, error) 
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestEndpointParameters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestEndpointParameters")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1076,12 +1054,12 @@ func (r apiTestEndpointParametersRequest) Execute() (*_nethttp.Response, error) 
 	if r.callback != nil {
 		localVarFormParams.Add("callback", parameterToString(*r.callback, ""))
 	}
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -1102,9 +1080,8 @@ func (r apiTestEndpointParametersRequest) Execute() (*_nethttp.Response, error) 
 
 	return localVarHTTPResponse, nil
 }
-type apiTestEnumParametersRequest struct {
+type ApiTestEnumParametersRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	enumHeaderStringArray *[]string
 	enumHeaderString *string
 	enumQueryStringArray *[]string
@@ -1116,64 +1093,62 @@ type apiTestEnumParametersRequest struct {
 }
 
 
-func (r apiTestEnumParametersRequest) EnumHeaderStringArray(enumHeaderStringArray []string) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumHeaderStringArray(enumHeaderStringArray []string) ApiTestEnumParametersRequest {
 	r.enumHeaderStringArray = &enumHeaderStringArray
 	return r
 }
 
-func (r apiTestEnumParametersRequest) EnumHeaderString(enumHeaderString string) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumHeaderString(enumHeaderString string) ApiTestEnumParametersRequest {
 	r.enumHeaderString = &enumHeaderString
 	return r
 }
 
-func (r apiTestEnumParametersRequest) EnumQueryStringArray(enumQueryStringArray []string) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumQueryStringArray(enumQueryStringArray []string) ApiTestEnumParametersRequest {
 	r.enumQueryStringArray = &enumQueryStringArray
 	return r
 }
 
-func (r apiTestEnumParametersRequest) EnumQueryString(enumQueryString string) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumQueryString(enumQueryString string) ApiTestEnumParametersRequest {
 	r.enumQueryString = &enumQueryString
 	return r
 }
 
-func (r apiTestEnumParametersRequest) EnumQueryInteger(enumQueryInteger int32) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumQueryInteger(enumQueryInteger int32) ApiTestEnumParametersRequest {
 	r.enumQueryInteger = &enumQueryInteger
 	return r
 }
 
-func (r apiTestEnumParametersRequest) EnumQueryDouble(enumQueryDouble float64) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumQueryDouble(enumQueryDouble float64) ApiTestEnumParametersRequest {
 	r.enumQueryDouble = &enumQueryDouble
 	return r
 }
 
-func (r apiTestEnumParametersRequest) EnumFormStringArray(enumFormStringArray []string) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumFormStringArray(enumFormStringArray []string) ApiTestEnumParametersRequest {
 	r.enumFormStringArray = &enumFormStringArray
 	return r
 }
 
-func (r apiTestEnumParametersRequest) EnumFormString(enumFormString string) apiTestEnumParametersRequest {
+func (r ApiTestEnumParametersRequest) EnumFormString(enumFormString string) ApiTestEnumParametersRequest {
 	r.enumFormString = &enumFormString
 	return r
 }
 
 /*
-TestEnumParameters To test enum parameters
-To test enum parameters
+ * TestEnumParameters To test enum parameters
+ * To test enum parameters
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestEnumParametersRequest
-*/
-func (a *FakeApiService) TestEnumParameters(ctx _context.Context) apiTestEnumParametersRequest {
-	return apiTestEnumParametersRequest{
-		apiService: a,
+ * @return apiTestEnumParametersRequest
+ */
+func (a *FakeApiService) TestEnumParametersGetRequest(ctx _context.Context) ApiTestEnumParametersRequest {
+	return ApiTestEnumParametersRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestEnumParametersRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestEnumParametersExecute(r ApiTestEnumParametersRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1183,7 +1158,7 @@ func (r apiTestEnumParametersRequest) Execute() (*_nethttp.Response, error) {
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestEnumParameters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestEnumParameters")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1235,12 +1210,12 @@ func (r apiTestEnumParametersRequest) Execute() (*_nethttp.Response, error) {
 	if r.enumFormString != nil {
 		localVarFormParams.Add("enum_form_string", parameterToString(*r.enumFormString, ""))
 	}
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -1261,9 +1236,8 @@ func (r apiTestEnumParametersRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiTestGroupParametersRequest struct {
+type ApiTestGroupParametersRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	requiredStringGroup *int32
 	requiredBooleanGroup *bool
 	requiredInt64Group *int64
@@ -1273,54 +1247,52 @@ type apiTestGroupParametersRequest struct {
 }
 
 
-func (r apiTestGroupParametersRequest) RequiredStringGroup(requiredStringGroup int32) apiTestGroupParametersRequest {
+func (r ApiTestGroupParametersRequest) RequiredStringGroup(requiredStringGroup int32) ApiTestGroupParametersRequest {
 	r.requiredStringGroup = &requiredStringGroup
 	return r
 }
 
-func (r apiTestGroupParametersRequest) RequiredBooleanGroup(requiredBooleanGroup bool) apiTestGroupParametersRequest {
+func (r ApiTestGroupParametersRequest) RequiredBooleanGroup(requiredBooleanGroup bool) ApiTestGroupParametersRequest {
 	r.requiredBooleanGroup = &requiredBooleanGroup
 	return r
 }
 
-func (r apiTestGroupParametersRequest) RequiredInt64Group(requiredInt64Group int64) apiTestGroupParametersRequest {
+func (r ApiTestGroupParametersRequest) RequiredInt64Group(requiredInt64Group int64) ApiTestGroupParametersRequest {
 	r.requiredInt64Group = &requiredInt64Group
 	return r
 }
 
-func (r apiTestGroupParametersRequest) StringGroup(stringGroup int32) apiTestGroupParametersRequest {
+func (r ApiTestGroupParametersRequest) StringGroup(stringGroup int32) ApiTestGroupParametersRequest {
 	r.stringGroup = &stringGroup
 	return r
 }
 
-func (r apiTestGroupParametersRequest) BooleanGroup(booleanGroup bool) apiTestGroupParametersRequest {
+func (r ApiTestGroupParametersRequest) BooleanGroup(booleanGroup bool) ApiTestGroupParametersRequest {
 	r.booleanGroup = &booleanGroup
 	return r
 }
 
-func (r apiTestGroupParametersRequest) Int64Group(int64Group int64) apiTestGroupParametersRequest {
+func (r ApiTestGroupParametersRequest) Int64Group(int64Group int64) ApiTestGroupParametersRequest {
 	r.int64Group = &int64Group
 	return r
 }
 
 /*
-TestGroupParameters Fake endpoint to test group parameters (optional)
-Fake endpoint to test group parameters (optional)
+ * TestGroupParameters Fake endpoint to test group parameters (optional)
+ * Fake endpoint to test group parameters (optional)
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestGroupParametersRequest
-*/
-func (a *FakeApiService) TestGroupParameters(ctx _context.Context) apiTestGroupParametersRequest {
-	return apiTestGroupParametersRequest{
-		apiService: a,
+ * @return apiTestGroupParametersRequest
+ */
+func (a *FakeApiService) TestGroupParametersGetRequest(ctx _context.Context) ApiTestGroupParametersRequest {
+	return ApiTestGroupParametersRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestGroupParametersRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestGroupParametersExecute(r ApiTestGroupParametersRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -1330,7 +1302,7 @@ func (r apiTestGroupParametersRequest) Execute() (*_nethttp.Response, error) {
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestGroupParameters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestGroupParameters")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1382,12 +1354,12 @@ func (r apiTestGroupParametersRequest) Execute() (*_nethttp.Response, error) {
 	if r.booleanGroup != nil {
 		localVarHeaderParams["boolean_group"] = parameterToString(*r.booleanGroup, "")
 	}
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -1408,35 +1380,32 @@ func (r apiTestGroupParametersRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiTestInlineAdditionalPropertiesRequest struct {
+type ApiTestInlineAdditionalPropertiesRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	param *map[string]string
 }
 
 
-func (r apiTestInlineAdditionalPropertiesRequest) Param(param map[string]string) apiTestInlineAdditionalPropertiesRequest {
+func (r ApiTestInlineAdditionalPropertiesRequest) Param(param map[string]string) ApiTestInlineAdditionalPropertiesRequest {
 	r.param = &param
 	return r
 }
 
 /*
-TestInlineAdditionalProperties test inline additionalProperties
+ * TestInlineAdditionalProperties test inline additionalProperties
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestInlineAdditionalPropertiesRequest
-*/
-func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context) apiTestInlineAdditionalPropertiesRequest {
-	return apiTestInlineAdditionalPropertiesRequest{
-		apiService: a,
+ * @return apiTestInlineAdditionalPropertiesRequest
+ */
+func (a *FakeApiService) TestInlineAdditionalPropertiesGetRequest(ctx _context.Context) ApiTestInlineAdditionalPropertiesRequest {
+	return ApiTestInlineAdditionalPropertiesRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestInlineAdditionalPropertiesRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestInlineAdditionalPropertiesExecute(r ApiTestInlineAdditionalPropertiesRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -1446,7 +1415,7 @@ func (r apiTestInlineAdditionalPropertiesRequest) Execute() (*_nethttp.Response,
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestInlineAdditionalProperties")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestInlineAdditionalProperties")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1480,12 +1449,12 @@ func (r apiTestInlineAdditionalPropertiesRequest) Execute() (*_nethttp.Response,
 	}
 	// body params
 	localVarPostBody = r.param
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -1506,41 +1475,38 @@ func (r apiTestInlineAdditionalPropertiesRequest) Execute() (*_nethttp.Response,
 
 	return localVarHTTPResponse, nil
 }
-type apiTestJsonFormDataRequest struct {
+type ApiTestJsonFormDataRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	param *string
 	param2 *string
 }
 
 
-func (r apiTestJsonFormDataRequest) Param(param string) apiTestJsonFormDataRequest {
+func (r ApiTestJsonFormDataRequest) Param(param string) ApiTestJsonFormDataRequest {
 	r.param = &param
 	return r
 }
 
-func (r apiTestJsonFormDataRequest) Param2(param2 string) apiTestJsonFormDataRequest {
+func (r ApiTestJsonFormDataRequest) Param2(param2 string) ApiTestJsonFormDataRequest {
 	r.param2 = &param2
 	return r
 }
 
 /*
-TestJsonFormData test json serialization of form data
+ * TestJsonFormData test json serialization of form data
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestJsonFormDataRequest
-*/
-func (a *FakeApiService) TestJsonFormData(ctx _context.Context) apiTestJsonFormDataRequest {
-	return apiTestJsonFormDataRequest{
-		apiService: a,
+ * @return apiTestJsonFormDataRequest
+ */
+func (a *FakeApiService) TestJsonFormDataGetRequest(ctx _context.Context) ApiTestJsonFormDataRequest {
+	return ApiTestJsonFormDataRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestJsonFormDataRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestJsonFormDataExecute(r ApiTestJsonFormDataRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1550,7 +1516,7 @@ func (r apiTestJsonFormDataRequest) Execute() (*_nethttp.Response, error) {
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestJsonFormData")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestJsonFormData")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1588,12 +1554,12 @@ func (r apiTestJsonFormDataRequest) Execute() (*_nethttp.Response, error) {
 	}
 	localVarFormParams.Add("param", parameterToString(*r.param, ""))
 	localVarFormParams.Add("param2", parameterToString(*r.param2, ""))
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
@@ -1614,9 +1580,8 @@ func (r apiTestJsonFormDataRequest) Execute() (*_nethttp.Response, error) {
 
 	return localVarHTTPResponse, nil
 }
-type apiTestQueryParameterCollectionFormatRequest struct {
+type ApiTestQueryParameterCollectionFormatRequest struct {
 	ctx _context.Context
-	apiService *FakeApiService
 	pipe *[]string
 	ioutil *[]string
 	http *[]string
@@ -1625,49 +1590,47 @@ type apiTestQueryParameterCollectionFormatRequest struct {
 }
 
 
-func (r apiTestQueryParameterCollectionFormatRequest) Pipe(pipe []string) apiTestQueryParameterCollectionFormatRequest {
+func (r ApiTestQueryParameterCollectionFormatRequest) Pipe(pipe []string) ApiTestQueryParameterCollectionFormatRequest {
 	r.pipe = &pipe
 	return r
 }
 
-func (r apiTestQueryParameterCollectionFormatRequest) Ioutil(ioutil []string) apiTestQueryParameterCollectionFormatRequest {
+func (r ApiTestQueryParameterCollectionFormatRequest) Ioutil(ioutil []string) ApiTestQueryParameterCollectionFormatRequest {
 	r.ioutil = &ioutil
 	return r
 }
 
-func (r apiTestQueryParameterCollectionFormatRequest) Http(http []string) apiTestQueryParameterCollectionFormatRequest {
+func (r ApiTestQueryParameterCollectionFormatRequest) Http(http []string) ApiTestQueryParameterCollectionFormatRequest {
 	r.http = &http
 	return r
 }
 
-func (r apiTestQueryParameterCollectionFormatRequest) Url(url []string) apiTestQueryParameterCollectionFormatRequest {
+func (r ApiTestQueryParameterCollectionFormatRequest) Url(url []string) ApiTestQueryParameterCollectionFormatRequest {
 	r.url = &url
 	return r
 }
 
-func (r apiTestQueryParameterCollectionFormatRequest) Context(context []string) apiTestQueryParameterCollectionFormatRequest {
+func (r ApiTestQueryParameterCollectionFormatRequest) Context(context []string) ApiTestQueryParameterCollectionFormatRequest {
 	r.context = &context
 	return r
 }
 
 /*
-TestQueryParameterCollectionFormat Method for TestQueryParameterCollectionFormat
-To test the collection format in query parameters
+ * TestQueryParameterCollectionFormat Method for TestQueryParameterCollectionFormat
+ * To test the collection format in query parameters
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return apiTestQueryParameterCollectionFormatRequest
-*/
-func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context) apiTestQueryParameterCollectionFormatRequest {
-	return apiTestQueryParameterCollectionFormatRequest{
-		apiService: a,
+ * @return apiTestQueryParameterCollectionFormatRequest
+ */
+func (a *FakeApiService) TestQueryParameterCollectionFormatGetRequest(ctx _context.Context) ApiTestQueryParameterCollectionFormatRequest {
+	return ApiTestQueryParameterCollectionFormatRequest{
 		ctx: ctx,
 	}
 }
 
 /*
-Execute executes the request
-
-*/
-func (r apiTestQueryParameterCollectionFormatRequest) Execute() (*_nethttp.Response, error) {
+ * Execute executes the request
+ */
+func (a *FakeApiService) TestQueryParameterCollectionFormatExecute(r ApiTestQueryParameterCollectionFormatRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -1677,7 +1640,7 @@ func (r apiTestQueryParameterCollectionFormatRequest) Execute() (*_nethttp.Respo
 		
 	)
 
-	localBasePath, err := r.apiService.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestQueryParameterCollectionFormat")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FakeApiService.TestQueryParameterCollectionFormat")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -1740,12 +1703,12 @@ func (r apiTestQueryParameterCollectionFormatRequest) Execute() (*_nethttp.Respo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := r.apiService.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := r.apiService.client.callAPI(req)
+	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
