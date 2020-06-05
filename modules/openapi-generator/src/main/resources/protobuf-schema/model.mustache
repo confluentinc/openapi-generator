@@ -8,6 +8,8 @@ package {{{packageName}}};
 import public "{{{modelPackage}}}/{{{import}}}.proto";
 {{/import}}
 {{/imports}}
+{{! TODO: Importing ccloud.proto because I dont know how to include it only if it's needed yet. }}
+import "ccloud.proto";
 
 {{#models}}
 {{#model}}
@@ -18,7 +20,7 @@ message {{classname}} {
   // {{{.}}}
   {{/description}}
   {{^isEnum}}
-  {{#vendorExtensions.x-protobuf-type}}{{.}} {{/vendorExtensions.x-protobuf-type}}{{vendorExtensions.x-protobuf-data-type}} {{name}} = {{vendorExtensions.x-index}}{{#vendorExtensions.x-protobuf-packed}} [packed=true]{{/vendorExtensions.x-protobuf-packed}};
+  {{#vendorExtensions.x-protobuf-type}}{{.}} {{/vendorExtensions.x-protobuf-type}}{{vendorExtensions.x-protobuf-data-type}} {{name}} = {{vendorExtensions.x-index}}{{#vendorExtensions.x-protobuf-packed}} [packed=true]{{/vendorExtensions.x-protobuf-packed}}{{#vendorExtensions.x-internal}} [(ccloud.field).internal = true]{{/vendorExtensions.x-internal}};
   {{/isEnum}}
   {{#isEnum}}
   enum {{name}} {
