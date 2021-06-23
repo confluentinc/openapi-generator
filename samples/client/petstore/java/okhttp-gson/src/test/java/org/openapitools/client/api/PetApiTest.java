@@ -168,7 +168,6 @@ public class PetApiTest {
         api.addPet(pet, headers);
 
         okhttp3.Call call = api.addPetCall(pet, headers, null);
-        Assert.assertTrue(false);
         Assert.assertEquals("Bearer: asdfasdf", call.request().header("Authorization"));
     }
 
